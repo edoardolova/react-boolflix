@@ -31,6 +31,23 @@ function App() {
   //     <WorldFlag code={stateCode} fallback={<span>{stateCode}</span>} style={{ width: 30, height: 20 }}></WorldFlag>
   //   )
   // }
+  function getStars(vote) {
+    const fullStars = Math.round(vote / 2);
+    const emptyStars = 5 - fullStars;
+
+    const stars = [];
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<i className="bi bi-star-fill text-warning me-1"></i>);
+    }
+
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<i className="bi bi-star-fill text-muted me-1"></i>);
+    }
+
+    return <>{stars}</>;
+  }
+
 
   return (
     <>
@@ -53,7 +70,7 @@ function App() {
                   <p>{`Titolo originale: ${film.original_title}`}</p>
                   <p>Lingua: <WorldFlag code={film.original_language} fallback={<span>{film.original_language}</span>} style={{ width: 30, height: 20 }}/></p>
                   {/* <p>Lingua: {getFlag(film.original_language)}</p> */}
-                  <p>{`Voto: ${film.vote_average}`}</p>
+                  <p>Voto: {getStars(film.vote_average)}</p>
                 </li>
             ))}
           </ul>
@@ -68,7 +85,7 @@ function App() {
                   <p>{`Titolo: ${serie.name}`}</p>
                   <p>{`Titolo originale: ${serie.original_name}`}</p>
                   <p>Lingua: <WorldFlag code={serie.original_language} fallback={<span>{serie.original_language}</span>} style={{ width: 30, height: 20 }}/></p>
-                  <p>{`Voto: ${serie.vote_average}`}</p>
+                  <p>Voto: {getStars(serie.vote_average)}</p>
                 </li>
             ))}
           </ul>
