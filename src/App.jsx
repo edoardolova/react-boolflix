@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import WorldFlag from 'react-world-flags';
 
 import './App.css'
 
@@ -30,7 +31,7 @@ function App() {
               <li className="list-group-item" key={film.id}>
                 <p>{`Titolo: ${film.title}`}</p>
                 <p>{`Titolo originale: ${film.original_title}`}</p>
-                <p>{`Lingua: ${film.original_language}`}</p>
+                <p>Lingua: <WorldFlag code={film.original_language} fallback={<span>{film.original_language}</span>} style={{ width: 30, height: 20 }}/></p>
                 <p>{`Voto: ${film.vote_average}`}</p>
               </li>
           ))}
