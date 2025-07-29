@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import WorldFlag from 'react-world-flags';
+import LocaleCodes from 'locale-codes'
 
 
 import './App.css'
+import localeCodes from 'locale-codes';
 
 function App() {
   const [search, setSearch] = useState('')
@@ -23,6 +25,13 @@ function App() {
     .catch(err => console.error(err));
   }
 
+  // function getFlag(language){
+  //   const stateCode = LocaleCodes.all.find((element)=> element.tag === language)['iso639-2'];
+  //   return(
+  //     <WorldFlag code={stateCode} fallback={<span>{stateCode}</span>} style={{ width: 30, height: 20 }}></WorldFlag>
+  //   )
+  // }
+
   return (
     <>
       <div className="container">
@@ -39,9 +48,11 @@ function App() {
           <ul className="list-group">
             {films.map((film) => (
                 <li className="list-group-item" key={film.id}>
+                  <img src={`https://image.tmdb.org/t/p/w342/${film.poster_path}`}  alt={film.original_title} />
                   <p>{`Titolo: ${film.title}`}</p>
                   <p>{`Titolo originale: ${film.original_title}`}</p>
                   <p>Lingua: <WorldFlag code={film.original_language} fallback={<span>{film.original_language}</span>} style={{ width: 30, height: 20 }}/></p>
+                  {/* <p>Lingua: {getFlag(film.original_language)}</p> */}
                   <p>{`Voto: ${film.vote_average}`}</p>
                 </li>
             ))}
@@ -53,6 +64,7 @@ function App() {
           <ul className="list-group">
             {series.map((serie) => (
                 <li className="list-group-item" key={serie.id}>
+                  <img src={`https://image.tmdb.org/t/p/w342/${serie.poster_path}`}  alt={serie.original_name} />
                   <p>{`Titolo: ${serie.name}`}</p>
                   <p>{`Titolo originale: ${serie.original_name}`}</p>
                   <p>Lingua: <WorldFlag code={serie.original_language} fallback={<span>{serie.original_language}</span>} style={{ width: 30, height: 20 }}/></p>
