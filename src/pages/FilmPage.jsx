@@ -1,0 +1,28 @@
+import { useContext, useEffect } from 'react';
+import { SearchContext } from '../contexts/SearchContext';
+
+export default function FilmPage(){
+    const { films, getFlag, getStars } = useContext(SearchContext);
+    return(
+        <div className='mb-5 container'>
+          <h2 className="text-white">FILM</h2>
+          <div  className="row gy-3">
+            {films.map((film) => (
+              <div className="col col-md-4 col-lg-3">
+                <div class="card text-bg-dark h-100">
+                  <img src={`https://image.tmdb.org/t/p/w342/${film.poster_path}`}  class="card-img"  alt={film.original_title}/>
+                  <div class="card-img-overlay">
+                    <h4 class="card-title mb-3">{film.title}</h4>
+                        <p className="card-text mb-2">{`Titolo: ${film.title}`}</p>
+                        <p className="card-text mb-2">{`Titolo originale: ${film.original_title}`}</p>
+                        <p className="card-text mb-2">Lingua: {getFlag(film.original_language)}</p>
+                        <p className="card-text mb-2">Voto: {getStars(film.vote_average)}</p>
+                        <p className="card-text mb-2">Trama: {film.overview.slice(0, 100) + '...'}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+            </div>
+        </div>
+    )
+}
