@@ -27,14 +27,14 @@ export default function SearchProvider({ children }) {
 
     // search function
     function handleSearchMovie() {
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}&language=it-IT`)
         .then(res => res.json())
         .then(data => {setFilms(data.results)})
         .catch(err => console.error(err));
     }
 
     function handleSearchSerie() {
-        fetch(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${search}`)
+        fetch(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${search}&language=it-IT`)
         .then(res => res.json())
         .then(data => {setSeries(data.results)})
         .catch(err => console.error(err));
@@ -42,21 +42,21 @@ export default function SearchProvider({ children }) {
 
     // Trending
     function handleSearchTrendFilms() {
-        fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`)
+        fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}&language=it-IT`)
         .then(res => res.json())
         .then(data => setTrendFilms(data.results))
         .catch(err => console.error(err));
     }
 
     function handleSearchTrendPeoples() {
-        fetch(`https://api.themoviedb.org/3/trending/person/day?api_key=${apiKey}`)
+        fetch(`https://api.themoviedb.org/3/trending/person/day?api_key=${apiKey}&language=it-IT`)
         .then(res => res.json())
         .then(data => setTrendPeople(data.results))
         .catch(err => console.error(err));
     }
 
     function handleSearchTrendSeries() {
-        fetch(`https://api.themoviedb.org/3/trending/tv/day?api_key=${apiKey}`)
+        fetch(`https://api.themoviedb.org/3/trending/tv/day?api_key=${apiKey}&language=it-IT`)
         .then(res => res.json())
         .then(data => setTrendSeries(data.results))
         .catch(err => console.error(err));
