@@ -5,6 +5,9 @@ import langToCountries from './languageDataMap';
 
 
 import './App.css'
+import Header from './components/Header';
+import FilmList from './components/FilmList';
+import SerieList from './components/SerieList';
 
 function App() {
   const [search, setSearch] = useState('')
@@ -59,43 +62,10 @@ function App() {
   return (
     <>
       <div className="container">
-        <h1>BOOLFLIX</h1>
-        <div className='search-div d-flex'>
-          <div className="form-floating mb-3">
-            <input value={search} onChange={(e)=>setSearch(e.target.value)} type="text" className="form-control" id="floatingInput" placeholder="Search"/>
-            <label htmlFor="floatingInput">Search</label>
-          </div>
-          <div className="btn" onClick={handleSearch}>Cerca</div>
-        </div>
-        <div className='mb-5'>
-          <h2>FILM</h2>
-          <ul className="list-group">
-            {films.map((film) => (
-                <li className="list-group-item" key={film.id}>
-                  <img src={`https://image.tmdb.org/t/p/w342/${film.poster_path}`}  alt={film.original_title} />
-                  <p>{`Titolo: ${film.title}`}</p>
-                  <p>{`Titolo originale: ${film.original_title}`}</p>
-                  <p>Lingua: {getFlag(film.original_language)}</p>
-                  <p>Voto: {getStars(film.vote_average)}</p>
-                </li>
-            ))}
-          </ul>
-        </div>
+        <Header search={search} setSearch={setSearch} onSearch={handleSearch}/>
+        <FilmList films={films} getFlag={getFlag} getStars={getStars} />
+        <SerieList series={series} getFlag={getFlag} getStars={getStars}/>
 
-        <div>
-          <h2>SERIE TV</h2>
-          <ul className="list-group">
-            {series.map((serie) => (
-                <li className="list-group-item" key={serie.id}>
-                  <img src={`https://image.tmdb.org/t/p/w342/${serie.poster_path}`}  alt={serie.original_name} />
-                  <p>{`Titolo: ${serie.name}`}</p>
-                  <p>{`Titolo originale: ${serie.original_name}`}</p>
-                  <p>Lingua: {getFlag(serie.original_language)}</p>
-                  <p>Voto: {getStars(serie.vote_average)}</p>
-                </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </>
   )
