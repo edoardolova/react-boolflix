@@ -23,7 +23,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container mb-5">
       <h2 className="text-white mb-4">Film Popolari</h2>
       <FilmList films={trendFilms} getFlag={getFlag} getStars={getStars} />
 
@@ -33,7 +33,7 @@ export default function HomePage() {
       <h2 className="text-white mb-4 mt-5">Attori Popolari</h2>
       <div className="row gy-3">
         {trendPeople.map((person) => (
-            <div className="col col-md-4 col-lg-3">
+            <div className="col-6 col-md-4 col-lg-3">
                 <div class="card text-bg-dark h-100">
                   <img src={`https://image.tmdb.org/t/p/w342/${person.profile_path}`}  class="card-img"  alt={person.name}/>
                   <div class="card-img-overlay">
