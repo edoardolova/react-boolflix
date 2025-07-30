@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="bg-dark text-white py-4 mt-auto">
+        <footer className="text-white py-4 mt-auto">
             <div className="container text-center">
 
                 <h5 className="mb-4 text-uppercase">Iscriviti alla nostra newsletter</h5>
