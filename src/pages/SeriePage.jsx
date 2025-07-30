@@ -7,9 +7,9 @@ export default function SeriePage(){
     const { series, getFlag, getStars } = useContext(SearchContext);
     return (
         <div className="mb-5 container">
-            <SearchComponent type="serie" />
             
             <h1 className="text-white mb-4">Quale serie vorresti vedere</h1>
+            <SearchComponent type="serie" />
             <SerieList series={series} getFlag={getFlag} getStars={getStars} />
         </div>
     )
