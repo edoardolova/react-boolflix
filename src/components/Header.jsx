@@ -23,10 +23,6 @@ export default function Header() {
                         <NavLink className="nav-link text-light fs-5 me-3" to="/films">Film</NavLink>
                         <NavLink className="nav-link  text-light fs-5 me-auto" to="/series">Serie</NavLink>
                     </div>
-                        {/* <form class="d-flex ms-auto" role="search">
-                            <input class="form-control me-2" type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" aria-label="Search"/>
-                            <button class="btn btn-outline-danger" type="button" onClick={handleSearch}>Search</button>
-                        </form> */}
                 </div>
             </nav>
 
