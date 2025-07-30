@@ -1,7 +1,6 @@
 export default function FilmList({films, getFlag, getStars}){
     return(
         <div className='mb-5'>
-          <h2 className="text-white">FILM</h2>
           <div  className="row gy-3">
             {films.map((film) => (
               <div className="col col-md-4 col-lg-3">

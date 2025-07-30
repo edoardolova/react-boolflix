@@ -1,7 +1,6 @@
 export default function SerieList({ series, getFlag, getStars }) {
   return (
     <div className="mb-5">
-      <h2 className="text-white">SERIE TV</h2>
       <div className="row gy-3">
         {series.map((serie) => (
           <div className="col col-md-4 col-lg-3" key={serie.id}>

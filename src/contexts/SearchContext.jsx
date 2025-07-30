@@ -6,10 +6,14 @@ import langToCountries from '../languageDataMap';
 export const SearchContext = createContext();
 
 export default function SearchProvider({ children }) {
+    const apiKey = import.meta.env.VITE_SOME_KEY;
     const [search, setSearch] = useState('');
     const [films, setFilms] = useState([]);
     const [series, setSeries] = useState([]);
-    const apiKey = import.meta.env.VITE_SOME_KEY;
+    // trending 
+    const [trendFilms, setTrendFilms] = useState([]);
+    const [trendPeople, setTrendPeople] = useState([]);
+    const [trendSeries, setTrendSeries] = useState([]);
 
     function handleSearchMovie(){
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}`)
@@ -25,6 +29,30 @@ export default function SearchProvider({ children }) {
         .then(res => res.json())
         .then(data => {
             setSeries(data.results)
+        })
+        .catch(err => console.error(err));
+    }
+    function handleSearchTrendFilms(){
+        fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`)
+        .then(res => res.json())
+        .then(data => {
+            setTrendFilms(data.results)
+        })
+        .catch(err => console.error(err));
+    }
+    function handleSearchTrendPeoples(){
+        fetch(`https://api.themoviedb.org/3/trending/person/day?api_key=${apiKey}`)
+        .then(res => res.json())
+        .then(data => {
+            setTrendPeople(data.results)
+        })
+        .catch(err => console.error(err));
+    }
+    function handleSearchTrendSeries(){
+        fetch(`https://api.themoviedb.org/3/trending/tv/day?api_key=${apiKey}`)
+        .then(res => res.json())
+        .then(data => {
+            setTrendSeries(data.results)
         })
         .catch(err => console.error(err));
     }
@@ -65,8 +93,14 @@ export default function SearchProvider({ children }) {
                 setSearch,
                 films,
                 series,
+                trendFilms,
+                trendPeople,
+                trendSeries,
                 handleSearchMovie,
                 handleSearchSerie,
+                handleSearchTrendFilms,
+                handleSearchTrendPeoples,
+                handleSearchTrendSeries,
                 getFlag,
                 getStars
             }}
