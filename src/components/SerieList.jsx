@@ -12,7 +12,6 @@ export default function SerieList({ series, getFlag, getStars }) {
               />
               <div className="card-img-overlay">
                 <h5 className="card-title mb-3">{serie.name}</h5>
-                <p className="card-text mb-2">Titolo: {serie.name}</p>
                 <p className="card-text mb-2">Titolo originale: {serie.original_name}</p>
                 <p className="card-text mb-2">Lingua: {getFlag(serie.original_language)}</p>
                 <p className="card-text mb-2">Voto: {getStars(serie.vote_average)}</p>
